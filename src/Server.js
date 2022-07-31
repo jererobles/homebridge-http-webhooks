@@ -132,8 +132,15 @@ Server.prototype.createServerCallback = function() {
         var found = false;
         for (var i = 0; i < this.accessories.length; i++) {
           var accessory = this.accessories[i];
+          // check if the accessoryId is the same as the accessory
           if (accessory.id === accessoryId) {
             responseBody = accessory.changeFromServer(theUrlParams);
+            found = true;
+            break;
+          }
+          // check if theUrlParams contain the accessoryId
+          if (accessory.id in theUrlParams) {
+            responseBody = accessory.changeFromServer({ value: theUrlParams[accessory.id] });
             found = true;
             break;
           }
