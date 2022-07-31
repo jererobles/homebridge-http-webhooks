@@ -118,7 +118,7 @@ Server.prototype.createServerCallback = function() {
       response.statusCode = 200;
       response.setHeader('Content-Type', 'application/json');
 
-      if (!theUrlParams.accessoryId && !theUrlParams.length) {
+      if (!theUrlParams.accessoryId && Object.keys(theUrlParams).length) {
         response.statusCode = 404;
         response.setHeader("Content-Type", "text/plain");
         var errorText = "[ERROR Http WebHook Server] No accessoryId in request.";
