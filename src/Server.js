@@ -136,13 +136,11 @@ Server.prototype.createServerCallback = function() {
           if (accessory.id === accessoryId) {
             responseBody = accessory.changeFromServer(theUrlParams);
             found = true;
-            break;
           }
           // check if theUrlParams contain the accessoryId
           if (accessory.id in theUrlParams) {
             responseBody = accessory.changeFromServer({ value: theUrlParams[accessory.id] });
             found = true;
-            break;
           }
         }
         if(responseBody) {
